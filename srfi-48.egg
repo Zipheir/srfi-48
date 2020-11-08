@@ -1,0 +1,10 @@
+;;; srfi-48.egg -*- Scheme -*- vim: ft=scheme:
+
+((author "Ken Dickey")
+ (maintainer "Sergey Goldgaber")
+ (synopsis "SRFI-48: Intermediate Format Strings")
+ (category lang-exts)
+ (dependencies srfi-38)
+ (test-dependencies test)
+ (license "BSD")
+ (components (extension srfi-48)))
