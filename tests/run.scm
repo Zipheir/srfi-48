@@ -2,4 +2,4 @@
 (import (chicken base))
 (import srfi-48)
 
-(include test-Chicken.scm)
+(include "test-Chicken.scm")
