@@ -1,3 +1,9 @@
+.PHONY 			:  clean
+.PHONY 			:  salmonella
+.PHONY 			:  test
+.PHONY 			:  test_new_egg
+.PHONY 			:  view
+
 CSC			:= csc
 CHICKEN_CLEAN		:= chicken-clean
 CHICKEN_INSTALL		:= chicken-install
