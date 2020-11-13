@@ -9,14 +9,14 @@ Some may disagree with specific escape options or return values. For those who d
 In particular, the reference implementation given here does not accept numeric arguments (aside from {{~F}}). Hence it does not support SRFI-29.
 
 It is highly desireable that baseline library code be small, attempt to eliminiate heap allocation and bound stack usage. This is especially important in embedded systems.
-This can be accomplished by writing directly to a port, rather than a string, by not supporting ~W or {{~F}}, and by replacing (display (number->string n r) p) with a
+This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing (display (number->string n r) p) with a
 carefully written (display:number->string n r p) which does not build intermediate strings.
 
-As this is intermediate format, it was felt that {{~F}} and ~W are too highly useful to elide. The ~H option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
+As this is intermediate format, it was felt that {{~F}} and {{~W}} are too highly useful to elide. The ~H option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
 === Rationale
 Inheriting from MacLisp, nearly all Lisp and Scheme implementations support some form of FORMAT function with support for various numbers of format directives. By agreeing to the options here, we raise the bar for portable code.
 
-The reference implementation is R5RS compliant and easy to port. In not requiring advanced features (aside from ~W and {{~F}}) small implementations are possible. E.g. the
+The reference implementation is R5RS compliant and easy to port. In not requiring advanced features (aside from {{~W}} and {{~F}}) small implementations are possible. E.g. the
 reference code does not use side effects (assignment) and is less than a third the source size of the latest SLIB implementation of FORMAT (less than a tenth if {{~F}} support
 is elided).
 
