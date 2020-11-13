@@ -27,9 +27,9 @@ Accepts a format template (a Scheme String), and processes it, replacing any for
 ===== Ports
 * When a port is specified it must be either an output port or a boolean.
 * If an output-port is specified, the formatted output is output into that port.
-* If the port argument is #t, output is to the current-output-port.
-* If the port is #f or no port is specified, the output is returned as a string.
-* If the port is specified and is #t or an output-port, the result of the format function is unspecified.
+* If the port argument is {{#t}}, output is to the current-output-port.
+* If the port is {{#f}} or no port is specified, the output is returned as a string.
+* If the port is specified and is {{#t}} or an output-port, the result of the format function is unspecified.
 ===== Encodings
 * It is unspecified which encoding is used (e.g. ASCII, EBCDIC, UNICODE).
 * A given implementation must specify which encoding is used.
