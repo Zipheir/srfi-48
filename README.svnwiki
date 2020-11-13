@@ -8,7 +8,7 @@ Some may disagree with specific escape options or return values. For those who d
 
 In particular, the reference implementation given here does not accept numeric arguments (aside from {{~F}}). Hence it does not support SRFI-29.
 
-It is highly desireable that baseline library code be small, attempt to eliminiate heap allocation and bound stack usage. This is especially important in embedded systems. This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing {{(display (number->string n r) p)}} with a carefully written {{(display:number->string n r p)}} which does not build intermediate strings.
+It is highly desirable that baseline library code be small, attempt to eliminate heap allocation and bound stack usage. This is especially important in embedded systems. This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing {{(display (number->string n r) p)}} with a carefully written {{(display:number->string n r p)}} which does not build intermediate strings.
 
 As this is intermediate format, it was felt that {{~F}} and {{~W}} are too highly useful to elide. The ~H option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
 === Rationale
@@ -48,10 +48,10 @@ Accepts a format template (a Scheme String), and processes it, replacing any for
  ~x        heXadecimal   the obj is a number which is output in hexdecimal radix                                                                              yes
  ~o        Octal         the obj is a number which is output in octal radix                                                                                   yes
  ~b        Binary        the obj is a number which is output in binary radix                                                                                  yes
- ~c        Character     the single charater obj is output by write-char                                                                                      yes
+ ~c        Character     the single character obj is output by write-char                                                                                      yes
  ~y        Yuppify       the list obj is pretty-printed to the output                                                                                         yes
  ~?        Indirection   the obj is another format-string and the following obj is a list of arguments; format is called recursively                          yes
- ~K        Indirection   the same as ~? for backward compatability with some existing implementations                                                         yes
+ ~K        Indirection   the same as ~? for backward compatibility with some existing implementations                                                         yes
  ~[w[,d]]F Fixed         ~w,dF outputs a number with width w and d digits after the decimal; ~wF outputs a string or number with width w.                     yes
  ~~        Tilde         output a tilde                                                                                                                       no
  ~t        Tab           output a tab character                                                                                                               no
@@ -109,7 +109,7 @@ OPTION  [MNEMONIC]  DESCRIPTION -- This implementation Assumes ASCII Text Encodi
 ~O  [Octal]     the arg is a number which is output in octal radix
 ~B  [Binary]    the arg is a number which is output in binary radix
 ~w,dF   [Fixed]     the arg is a string or number which has width w and d digits after the decimal
-~C  [Character] charater arg is output by write-char
+~C  [Character] character arg is output by write-char
 ~_  [Space]     a single space character is output
 ~Y  [Yuppify]   the list arg is pretty-printed to the output
 ~?  [Indirection]   recursive format: next arg is a format-string and the following arg a list of arguments
