@@ -185,8 +185,6 @@ OPTION  [MNEMONIC]  DESCRIPTION -- This implementation Assumes ASCII Text Encodi
 "
 "
 </enscript>
-=== Implementation
-The implementation below requires SRFI-6 (Basic string ports), SRFI-23 (Error reporting mechanism) and SRFI-38 (External Representation for Data With Shared Structure).
 === Author
 * Ken Dickey
 * Ported to Chicken Scheme 5 by Sergey Goldgaber
