@@ -8,7 +8,7 @@ Some may disagree with specific escape options or return values. For those who d
 
 In particular, the reference implementation given here does not accept numeric arguments (aside from {{~F}}). Hence it does not support SRFI-29.
 
-It is highly desireable that baseline library code be small, attempt to eliminiate heap allocation and bound stack usage. This is especially important in embedded systems. This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing (display (number->string n r) p) with a carefully written (display:number->string n r p) which does not build intermediate strings.
+It is highly desireable that baseline library code be small, attempt to eliminiate heap allocation and bound stack usage. This is especially important in embedded systems. This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing {{(display (number->string n r) p)}} with a carefully written {{(display:number->string n r p)}} which does not build intermediate strings.
 
 As this is intermediate format, it was felt that {{~F}} and {{~W}} are too highly useful to elide. The ~H option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
 === Rationale
