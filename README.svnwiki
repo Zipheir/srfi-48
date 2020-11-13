@@ -23,21 +23,22 @@ The optional port argument allows for compatibility with older code written for,
 
 Accepts a format template (a Scheme String), and processes it, replacing any format directives in order with one or more characters, the characters themselves dependent on the semantics of the format directive encountered.
 ===== Each directive may consume one obj.
-====== It is an error if fewer or more obj values are provided than format directives that require them.
+* It is an error if fewer or more obj values are provided than format directives that require them.
 ===== Ports
-====== When a port is specified it must be either an output port or a boolean.
-====== If an output-port is specified, the formatted output is output into that port.
-====== If the port argument is #t, output is to the current-output-port.
-====== If the port is #f or no port is specified, the output is returned as a string.
-====== If the port is specified and is #t or an output-port, the result of the format function is unspecified.
+* When a port is specified it must be either an output port or a boolean.
+* If an output-port is specified, the formatted output is output into that port.
+* If the port argument is #t, output is to the current-output-port.
+* If the port is #f or no port is specified, the output is returned as a string.
+* If the port is specified and is #t or an output-port, the result of the format function is unspecified.
 ===== Encodings
-====== It is unspecified which encoding is used (e.g. ASCII, EBCDIC, UNICODE).
-====== A given implementation must specify which encoding is used.
-====== The implementation may or may not allow the encoding to be selected or changed.
-===== It is an error if an format directive consumes an obj argument and that argument does not confirm to a required type as noted in the table below.
-===== It is permissible, but highly discouraged, to implement pretty-print as (define pretty-print write).
-===== An format directive is a two character sequence in the string where the first character is a tilde '~'.
-===== Directive characters are case-independent, i.e. upper and lower case characters are interpreted the same.
+* It is unspecified which encoding is used (e.g. ASCII, EBCDIC, UNICODE).
+* A given implementation must specify which encoding is used.
+* The implementation may or may not allow the encoding to be selected or changed.
+===== Note
+* It is an error if an format directive consumes an obj argument and that argument does not confirm to a required type as noted in the table below.
+* It is permissible, but highly discouraged, to implement pretty-print as (define pretty-print write).
+* An format directive is a two character sequence in the string where the first character is a tilde '~'.
+* Directive characters are case-independent, i.e. upper and lower case characters are interpreted the same.
 ===== Each directive code's meaning is described in the following table:
  DIRECTIVE MNEMONIC      ACTION                                                                                                                               CONSUMES?
  ~a        Any           (display obj) for humans                                                                                                             yes
@@ -59,34 +60,34 @@ Accepts a format template (a Scheme String), and processes it, replacing any for
  ~_        Space         a single space character is output                                                                                                   no
  ~h        Help          outputs one line of call synopsis, one line of comment, and one line of synopsis for each format directive, starting with the        no
                              directive (e.g. "~t")
-===== The ~F, fixed format, directive requires some elucidation.
-===== ~wF is useful for strings or numbers.
-====== Where the string (or number->string of the number) has fewer characters than the integer width w, the string is padded on the left with space characters.
-===== ~w,dF is typically used only on numbers.
-===== For strings, the d specifier is ignored.
-===== For numbers, the integer d specifies the number of decimal digits after the decimal place.
-===== Both w and d must be zero or positive.
-===== If d is specified, the number is processed as if added to 0.0, i.e. it is converted to an inexact value.
+* The ~F, fixed format, directive requires some elucidation.
+* ~wF is useful for strings or numbers.
+* Where the string (or number->string of the number) has fewer characters than the integer width w, the string is padded on the left with space characters.
+* ~w,dF is typically used only on numbers.
+* For strings, the d specifier is ignored.
+* For numbers, the integer d specifies the number of decimal digits after the decimal place.
+* Both w and d must be zero or positive.
+* If d is specified, the number is processed as if added to 0.0, i.e. it is converted to an inexact value.
 <enscript highlight="scheme">
 (format "~8,2F" 1/3) => "    0.33"
 </enscript>
-===== If no d is specified, the number is not coerced to inexact.
+* If no d is specified, the number is not coerced to inexact.
 <enscript highlight="scheme">
 (format "~6F" 32) => "    32"
 </enscript>
-===== Digits are padded to the right with zeros
+* Digits are padded to the right with zeros
 <enscript highlight="scheme">
 (format "~8,2F" 32) => "   32.00"
 </enscript>
-===== If the number it too large to fit in the width specified, a string longer than the width is returned
+* If the number it too large to fit in the width specified, a string longer than the width is returned
 <enscript highlight="scheme">
 (format "~1,2F" 4321) => "4321.00"
 </enscript>
-===== If the number is complex, d is applied to both real and imaginal parts
+* If the number is complex, d is applied to both real and imaginal parts
 <enscript highlight="scheme">
 (format "~1,2F" (sqrt -3.9)) => "0.00+1.97i"
 </enscript>
-===== For very large or very small numbers, the point where exponential notation is used is implementation defined.
+* For very large or very small numbers, the point where exponential notation is used is implementation defined.
 <enscript highlight="scheme">
 (format "~8F" 32e5) => "   3.2e6" or "3200000.0"
 </enscript>
@@ -187,8 +188,8 @@ OPTION  [MNEMONIC]  DESCRIPTION -- This implementation Assumes ASCII Text Encodi
 === Implementation
 The implementation below requires SRFI-6 (Basic string ports), SRFI-23 (Error reporting mechanism) and SRFI-38 (External Representation for Data With Shared Structure).
 === Author
-==== Ken Dickey
-==== Ported to Chicken Scheme 5 by Sergey Goldgaber
+* Ken Dickey
+* Ported to Chicken Scheme 5 by Sergey Goldgaber
 === Copyright
 Copyright (C) Kenneth A Dickey (2003). All Rights Reserved.
 
