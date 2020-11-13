@@ -23,7 +23,9 @@ is elided).
 The optional port argument allows for compatibility with older code written for, e.g. scheme48, MIT Scheme, T, et cetera, which required a port argument. It is also useful
 in cases where a synoptic implementation of Scheme and CommonLisp is maintained.
 === Specification
-==== format [port] format-string [obj ...]
+
+<procedure>format [port] format-string [obj ...]</procedure>
+
 Accepts a format template (a Scheme String), and processes it, replacing any format directives in order with one or more characters, the characters themselves dependent on the semantics of the format directive encountered.
 ===== Each directive may consume one obj.
 ====== It is an error if fewer or more obj values are provided than format directives that require them.
