@@ -44,28 +44,26 @@ Accepts a format template (a Scheme String), and processes it, replacing any for
 ===== An format directive is a two character sequence in the string where the first character is a tilde '~'.
 ===== Directive characters are case-independent, i.e. upper and lower case characters are interpreted the same.
 ===== Each directive code's meaning is described in the following table:
-#+BEGIN_EXAMPLE
-DIRECTIVE MNEMONIC      ACTION                                                                                                                               CONSUMES?
-~a        Any           (display obj) for humans                                                                                                             yes
-~s        Slashified    (write obj) for parsers                                                                                                              yes
-~w        WriteCircular (write-with-shared-structure obj) like ~s, but handles recursive structures                                                          yes
-~d        Decimal       the obj is a number which is output in decimal radix                                                                                 yes
-~x        heXadecimal   the obj is a number which is output in hexdecimal radix                                                                              yes
-~o        Octal         the obj is a number which is output in octal radix                                                                                   yes
-~b        Binary        the obj is a number which is output in binary radix                                                                                  yes
-~c        Character     the single charater obj is output by write-char                                                                                      yes
-~y        Yuppify       the list obj is pretty-printed to the output                                                                                         yes
-~?        Indirection   the obj is another format-string and the following obj is a list of arguments; format is called recursively                          yes
-~K        Indirection   the same as ~? for backward compatability with some existing implementations                                                         yes
-~[w[,d]]F Fixed         ~w,dF outputs a number with width w and d digits after the decimal; ~wF outputs a string or number with width w.                     yes
-~~        Tilde         output a tilde                                                                                                                       no
-~t        Tab           output a tab character                                                                                                               no
-~%        Newline       output a newline character                                                                                                           no
-~&        Freshline     output a newline character if it is known that the previous output was not a newline                                                 no
-~_        Space         a single space character is output                                                                                                   no
-~h        Help          outputs one line of call synopsis, one line of comment, and one line of synopsis for each format directive, starting with the        no
-                            directive (e.g. "~t")
-#+END_EXAMPLE
+ DIRECTIVE MNEMONIC      ACTION                                                                                                                               CONSUMES?
+ ~a        Any           (display obj) for humans                                                                                                             yes
+ ~s        Slashified    (write obj) for parsers                                                                                                              yes
+ ~w        WriteCircular (write-with-shared-structure obj) like ~s, but handles recursive structures                                                          yes
+ ~d        Decimal       the obj is a number which is output in decimal radix                                                                                 yes
+ ~x        heXadecimal   the obj is a number which is output in hexdecimal radix                                                                              yes
+ ~o        Octal         the obj is a number which is output in octal radix                                                                                   yes
+ ~b        Binary        the obj is a number which is output in binary radix                                                                                  yes
+ ~c        Character     the single charater obj is output by write-char                                                                                      yes
+ ~y        Yuppify       the list obj is pretty-printed to the output                                                                                         yes
+ ~?        Indirection   the obj is another format-string and the following obj is a list of arguments; format is called recursively                          yes
+ ~K        Indirection   the same as ~? for backward compatability with some existing implementations                                                         yes
+ ~[w[,d]]F Fixed         ~w,dF outputs a number with width w and d digits after the decimal; ~wF outputs a string or number with width w.                     yes
+ ~~        Tilde         output a tilde                                                                                                                       no
+ ~t        Tab           output a tab character                                                                                                               no
+ ~%        Newline       output a newline character                                                                                                           no
+ ~&        Freshline     output a newline character if it is known that the previous output was not a newline                                                 no
+ ~_        Space         a single space character is output                                                                                                   no
+ ~h        Help          outputs one line of call synopsis, one line of comment, and one line of synopsis for each format directive, starting with the        no
+                             directive (e.g. "~t")
 ===== The ~F, fixed format, directive requires some elucidation.
 ===== ~wF is useful for strings or numbers.
 ====== Where the string (or number->string of the number) has fewer characters than the integer width w, the string is padded on the left with space characters.
