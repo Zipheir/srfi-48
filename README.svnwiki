@@ -10,7 +10,7 @@ In particular, the reference implementation given here does not accept numeric a
 
 It is highly desirable that baseline library code be small, attempt to eliminate heap allocation and bound stack usage. This is especially important in embedded systems. This can be accomplished by writing directly to a port, rather than a string, by not supporting {{~W}} or {{~F}}, and by replacing {{(display (number->string n r) p)}} with a carefully written {{(display:number->string n r p)}} which does not build intermediate strings.
 
-As this is intermediate format, it was felt that {{~F}} and {{~W}} are too highly useful to elide. The ~H option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
+As this is intermediate format, it was felt that {{~F}} and {{~W}} are too highly useful to elide. The {{~H}} option is helpful to users, allows for programattic query, and makes clear which format directives are supported.
 === Rationale
 Inheriting from MacLisp, nearly all Lisp and Scheme implementations support some form of FORMAT function with support for various numbers of format directives. By agreeing to the options here, we raise the bar for portable code.
 
