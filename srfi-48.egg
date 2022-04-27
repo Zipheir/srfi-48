@@ -6,5 +6,5 @@
  (category lang-exts)
  (dependencies srfi-38)
  (test-dependencies test)
- (license "BSD")
+ (license "MIT")
  (components (extension srfi-48)))
