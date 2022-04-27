@@ -1,7 +1,7 @@
 ;;; srfi-48.egg -*- Scheme -*- vim: ft=scheme:
 
 ((author "Ken Dickey")
- (maintainer "Sergey Goldgaber")
+ (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI-48: Intermediate Format Strings")
  (category lang-exts)
  (dependencies srfi-38)
