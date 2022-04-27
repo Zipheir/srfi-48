@@ -1,5 +1,5 @@
-(import scheme)
-(import (chicken base))
-(import srfi-48)
+(import scheme
+        (chicken base)
+        (srfi 48))
 
 (include "test-Chicken.scm")
