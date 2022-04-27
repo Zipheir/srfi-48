@@ -6,4 +6,4 @@
  (category lang-exts)
  (dependencies srfi-38)
  (license "MIT")
- (components (extension srfi-48)))
+ (components (extension srfi-48 (types-file))))

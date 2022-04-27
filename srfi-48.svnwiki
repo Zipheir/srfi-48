@@ -199,7 +199,7 @@ Contact: {{wcm at sigwinch dot xyzzy without the zy}}
 === Version history
 
 ; 0.1 : Ported to Chicken Scheme 5 by Sergey Goldgaber
-; 0.2 : Update maintainer, minor improvements.
+; 0.2 : Update maintainer, add types, minor improvements.
 
 === License
 

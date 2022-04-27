@@ -3,6 +3,7 @@
           (chicken base)
           (chicken platform)
           (chicken pretty-print)
+          (chicken type)
           (only (srfi 38) write-with-shared-structure))
 
   (register-feature! 'srfi-48)

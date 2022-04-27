@@ -16,6 +16,8 @@
 (define (real-number->string x)    (number->string x))
 
 ;; FORMAT
+(: format (or (string #!rest * -> undefined)
+              ((or boolean output-port) #!rest * -> undefined)))
 (define (format . args)
   (cond
    ((null? args)
