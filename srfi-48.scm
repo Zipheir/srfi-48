@@ -2,9 +2,8 @@
   (import scheme
           (chicken base)
           (chicken platform)
-          (chicken pretty-print))
-
-  (import srfi-38)
+          (chicken pretty-print)
+          (only (srfi 38) write-with-shared-structure))
 
   (register-feature! 'srfi-48)
 
