@@ -1,7 +1,7 @@
 (module srfi-48 (format)
-  (import scheme)
-  (import (chicken base))
-  (import (chicken platform))
+  (import scheme
+          (chicken base)
+          (chicken platform))
 
   (import srfi-38)
 
