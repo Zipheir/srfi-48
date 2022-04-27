@@ -31,7 +31,8 @@
   (newline)
   (display "RESULT : ")
   (display (if (= *test-failed-count* 0) "OK" "** NG **"))
-  (newline))
+  (newline)
+  (exit *test-failed-count*))
 
 (define-syntax expect
   (syntax-rules ()
