@@ -5,7 +5,6 @@
 ;;(define DONT-PRINT (string->symbol ""))
 ;;(define DONT-PRINT (void))
 ;;(define DONT-PRINT #!void)
-(define pretty-print   write) ; ugly but permitted
 ;; (require 'srfi-38)  ;; write-with-shared-structure
 
 ;; Following three procedures are used by format ~F .
