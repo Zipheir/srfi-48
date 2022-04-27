@@ -5,6 +5,5 @@
  (synopsis "SRFI-48: Intermediate Format Strings")
  (category lang-exts)
  (dependencies srfi-38)
- (test-dependencies test)
  (license "MIT")
  (components (extension srfi-48)))
