@@ -2,7 +2,6 @@
 
 (define ascii-tab   (integer->char  9))  ;; NB: assumes ASCII encoding
 (define dont-print  (void))
-;; (require 'srfi-38)  ;; write-with-shared-structure
 
 ;; Following three procedures are used by format ~F .
 ;; 'inexact-number->string' determines whether output is fixed-point
