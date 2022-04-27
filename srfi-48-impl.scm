@@ -1,10 +1,7 @@
 ;; IMPLEMENTATION DEPENDENT options
 
 (define ascii-tab   (integer->char  9))  ;; NB: assumes ASCII encoding
-(define dont-print  (if (eq? #t #f) 1))
-;;(define DONT-PRINT (string->symbol ""))
-;;(define DONT-PRINT (void))
-;;(define DONT-PRINT #!void)
+(define dont-print  (void))
 ;; (require 'srfi-38)  ;; write-with-shared-structure
 
 ;; Following three procedures are used by format ~F .
