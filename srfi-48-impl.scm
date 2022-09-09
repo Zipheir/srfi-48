@@ -21,12 +21,12 @@
 (define (format . args)
   (cond
    ((null? args)
-    (error "FORMAT: required format-string argument is missing")
+    (arity-exception 'format args)
     )
    ((string? (car args))
     (apply format (cons #f args)))
    ((< (length args) 2)
-    (error (format #f "FORMAT: too few arguments ~s" (cons 'format args)))
+    (arity-exception 'format args)
     )
    (else
     (let ( (output-port   (car  args))
@@ -37,9 +37,9 @@
                  (cond ((output-port? output-port) output-port)
                        ((eq? output-port #t) (current-output-port)) 
                        ((eq? output-port #f) (open-output-string)) 
-                       (else (error
-                              (format #f "FORMAT: bad output-port argument: ~s"
-                                      output-port)))
+                       (else (type-exception 'format
+                                             "bad output-port argument"
+                                             output-port))
                 ) )
                 (return-value 
                  (if (eq? output-port #f)    ;; if format into a string 
@@ -167,8 +167,10 @@
                  (string-grow (real-number->string real) width #\space)))
              ))
             (else
-             (error
-              (format "FORMAT: ~F requires a number or a string, got ~s" number-or-string)))
+             (type-exception
+              'format
+              (format "FORMAT: ~F requires a number or a string, got ~s" number-or-string)
+              number-or-string))
             ))
 
          (define documentation-string
@@ -197,7 +199,7 @@ OPTION  [MNEMONIC]      DESCRIPTION     -- Implementation Assumes ASCII Text Enc
 
          (define (require-an-arg args)
            (if (null? args)
-               (error "FORMAT: too few arguments" ))
+               (arity-exception 'format args))
          )
         
          (define (format-help format-strg arglist)
@@ -325,8 +327,9 @@ OPTION  [MNEMONIC]      DESCRIPTION     -- Implementation Assumes ASCII Text Enc
                                  (in-width? #t)
                                )
                        (if (>= index length-of-format-string)
-                           (error
-                            (format "FORMAT: improper numeric format directive in ~s" format-strg))
+                           (format-exception
+                            (format "FORMAT: improper numeric format directive in ~s" format-strg)
+                            format-strg)
                            (let ( (next-char (string-ref format-strg index)) )
                              (cond
                               ((char-numeric? next-char)
@@ -355,21 +358,25 @@ OPTION  [MNEMONIC]      DESCRIPTION     -- Implementation Assumes ASCII Text Enc
                                          w-digits
                                          d-digits
                                          #f)
-                                   (error
-                                    (format "FORMAT: too many commas in directive ~s" format-strg)))
+                                   (format-exception
+                                    (format "FORMAT: too many commas in directive ~s" format-strg)
+                                    format-strg))
                                )
                               (else
-                               (error (format "FORMAT: ~~w.dF directive ill-formed in ~s" format-strg))))))
+                               (format-exception
+                                (format "FORMAT: ~~w.dF directive ill-formed in ~s" format-strg)
+                                format-strg)))))
                      ))
                     ((#\? #\K)       ; indirection -- take next arg as format string
                      (cond           ;  and following arg as list of format args
                       ((< (length arglist) 2)
-                       (error
-                        (format "FORMAT: less arguments than specified for ~~?: ~s" arglist))
+                       (apply
+                        format-exception
+                        (format "FORMAT: less arguments than specified for ~~?: ~s" arglist)
+                        arglist)
                        )
                       ((not (string? (car arglist)))
-                       (error
-                        (format "FORMAT: ~~? requires a string: ~s" (car arglist)))
+                       (format-exception "~? requires a string" (car arglist))
                        )
                       (else
                        (format-help (car arglist) (cadr arglist))
@@ -380,8 +387,8 @@ OPTION  [MNEMONIC]      DESCRIPTION     -- Implementation Assumes ASCII Text Enc
                      (anychar-dispatch (+ pos 1) arglist #t)
                      )
                     (else                
-                     (error (format "FORMAT: unknown tilde escape: ~s"
-                                    (string-ref format-strg pos))))
+                     (format-exception "unknown tilde escape"
+                                       (string-ref format-strg pos)))
                     )))
                 )) ; end tilde-dispatch   
              ) ; end letrec            
@@ -393,8 +400,10 @@ OPTION  [MNEMONIC]      DESCRIPTION     -- Implementation Assumes ASCII Text Enc
         ; format main
         (let ( (unused-args (format-help format-string args)) )
           (if (not (null? unused-args))
-              (error
-               (format "FORMAT: unused arguments ~s" unused-args)))
+              (apply
+               format-exception
+               "unused arguments"
+               unused-args))
           (return-value))
                                               
       )) ; end letrec, if
