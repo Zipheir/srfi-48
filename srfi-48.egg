@@ -4,6 +4,7 @@
  (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI-48: Intermediate Format Strings")
  (category lang-exts)
+ (version "1.0.0")
  (dependencies srfi-38)
  (license "MIT")
  (components (extension srfi-48 (types-file))))

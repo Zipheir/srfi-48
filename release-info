@@ -3,3 +3,4 @@
 (uri targz "https://codeload.github.com/Zipheir/{egg-name}/tar.gz/{egg-release}")
 (release "0.1")
 (release "0.2")
+(release "1.0.0")
