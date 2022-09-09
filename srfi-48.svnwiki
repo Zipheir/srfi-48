@@ -186,6 +186,17 @@ notation is used is implementation defined.
 "
 </enscript>
 
+== Exceptions
+
+This egg tries to give useful information when things go wrong. Procedure
+arguments are type-checked; when a type check fails, a condition of kind
+{{(exn type assertion)}} is raised. Similarly, arity errors raise
+{{(exn arity assertion)}} conditions. This conforms to the condition
+protocol used by CHICKEN's internal libraries. A custom condition kind,
+{{(exn format)}}, indicates invalid {{format}} directives.
+
+See the [[Module (chicken condition)]] page for more information.
+
 == About this egg
 
 === Author
@@ -206,10 +217,12 @@ Contact: {{wcm at sigwinch dot xyzzy without the zy}}
 
 ; 0.1 : Ported to Chicken Scheme 5 by Sergey Goldgaber
 ; 0.2 : Update maintainer, add types, minor improvements.
+; 1.0.0 : Stable public API (yes, it was already stable). Rework exceptions.
 
 === License
 
 Copyright (C) Kenneth A Dickey (2003). All Rights Reserved.
+Copyright (C) Wolfgang Corcoran-Mathe (2022).
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
