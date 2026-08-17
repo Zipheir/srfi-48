@@ -218,11 +218,12 @@ Contact: {{wcm at sigwinch dot xyzzy without the zy}}
 ; 0.1 : Ported to Chicken Scheme 5 by Sergey Goldgaber
 ; 0.2 : Update maintainer, add types, minor improvements.
 ; 1.0.0 : Stable public API (yes, it was already stable). Rework exceptions.
+; 1.1.0 : Add CHICKEN 6 support.
 
 === License
 
   Copyright (C) Kenneth A Dickey (2003). All Rights Reserved.
-  Copyright (C) Wolfgang Corcoran-Mathe (2022).
+  Copyright (C) Wolfgang Corcoran-Mathe (2022 – 2026).
   
   Permission is hereby granted, free of charge, to any person obtaining a
   copy of this software and associated documentation files (the "Software"),
